@@ -1,9 +1,8 @@
 const nt = require('express').Router();
+const notesController = require('../controllers/notes')
 
-nt.get('/', (req, res) => {
-    console.log(req)
-})
+nt.get('/', notesController.getNotes)
 
-nt.post('/', )
+nt.post('/', notesController.newNote)
 
 module.exports = nt 
