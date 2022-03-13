@@ -89,12 +89,10 @@ Once installed run `npm run start` and visit http://localhost:3001. Or visit the
 - To view notes: Simply click the note you wish to view on the left hand side
 - To add notes Click the "+" in the top right
 - Type a title and the note then click the Save icon that appears in the top right
-- Refresh to see your new note
+- Click the Delete Icon to remove a note 
 
 
 <p align="right">(<a href="#top">back to top</a>)</p>
-
-
 
 
 <!-- CONTACT -->

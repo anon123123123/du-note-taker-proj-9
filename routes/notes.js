@@ -5,4 +5,6 @@ nt.get('/', notesController.getNotes)
 
 nt.post('/', notesController.newNote)
 
+nt.delete('/:id', notesController.removeNote)
+
 module.exports = nt 
