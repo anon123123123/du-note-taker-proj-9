@@ -1,21 +1,28 @@
 const fs = require('fs')
+const { v4: uuidv4 } = require('uuid');
 
+// Opens DB for either GET or POST
+const db = fs.readFileSync('./db/db.json', 'utf8')
+const dbJSON = JSON.parse(db)
 
 // POST handler for new note
 const newNote = (req, res, next) => {
-    console.log("POST")
+    const note = req.body
+    note.id = uuidv4()
+    dbJSON.push(note)
+    const newNotes = JSON.stringify(dbJSON)
+    fs.writeFile('./db/db.json', newNotes, err => {
+        if (err) {
+            console.error(err)
+            return
+        }
+        console.info('Database file updated')
+    })
 };
 
 // GET returns notes 
 const getNotes = (req, res, next) => {
-    const db = fs.readFile('./db/db.json', 'utf8', function read(err, data)  {
-        if(err) {
-            console.error('Unable to open db.json')
-        } else {
-            const dbJSON = JSON.parse(data)
-            res.send(dbJSON)
-        }
-    })
+    res.send(dbJSON)
 };
 
 module.exports = {newNote, getNotes};
